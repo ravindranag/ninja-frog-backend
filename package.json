@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon src",
-    "start": "node start",
+    "start": "node src",
     "studio": "prisma studio",
     "generate": "prisma generate"
   },
