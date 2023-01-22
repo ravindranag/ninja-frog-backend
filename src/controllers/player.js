@@ -3,7 +3,10 @@ import { prisma } from "../lib/prisma.js"
 export const getAllPlayers = async (req, res, next) => {
 	try {
 		const allItems = await prisma.player.findMany({
-			
+			orderBy: {
+				score: 'desc'
+			},
+			take: 7
 		})
 
 		res.json({
@@ -26,7 +29,7 @@ export const addPlayer = async (req, res, next) => {
 		const item = await prisma.player.create({
 			data: {
 				username: username,
-				score: score
+				score: parseInt(score)
 			}
 		})
 
@@ -51,7 +54,7 @@ export const updateScore = async (req, res, next) => {
 				id: id
 			},
 			data: {
-				score: score
+				score: parseInt(score)
 			}
 		})
 
